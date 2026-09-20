@@ -2,7 +2,48 @@
 
 ## 📜 Commits Históricos
 
-### Commit #2 (Actual) - `f0f1e74`
+### Commit #8 (Actual) - `9b96635`
+**Mensaje**: `fix: Proyecto compila y corre - escenas .tscn, scripts C# y csproj corregidos`  
+**Fecha**: 20 Septiembre, 2026
+
+#### Cambios introducidos:
+- ✅ Crear `Plataforma01.csproj` (Godot.NET.Sdk 4.7.2, net8.0) con `DefaultItemExcludes` que evita el error CS0579 (AssemblyInfo duplicado)
+- ✅ Reescribir escenas `.tscn` con sintaxis válida Godot 4 (`parent="."` para hijos del nodo raíz)
+- ✅ Corregir `DataModels.cs` con API correcta de Godot C# (`FileAccess.ModeFlags`, `file.GetAsText()`, `file.StoreString()`, `Json.Stringify`)
+- ✅ Eliminar `godot_plugins/` (GDExtension no necesario en Godot .NET nativo)
+- ✅ `project.godot`: `main_scene` apuntando a `res://res/scenes/main.tscn`
+- ✅ Verificado: import headless sin errores, build exitoso, juego corre headless sin warnings
+- ✅ Push a GitHub
+
+---
+
+### Commit #7 - `6e9acac`
+**Mensaje**: `fix: Simplificar escenas .tscn - quitar scripts de nodos y dejar sin scripts por ahora`  
+**Fecha**: 19-20 Septiembre, 2026
+
+---
+
+### Commit #6 - `1714d06`
+**Mensaje**: `fix: Corregir sintaxis .tscn - usar script.resource_path en lugar de ext_resource`
+
+---
+
+### Commit #5 - `85522f9`
+**Mensaje**: `fix: Declarar correctamente scripts .cs en escenas .tscn`
+
+---
+
+### Commit #4 - `e52a217`
+**Mensaje**: `fix: Corregir sintaxis en todas las escenas .tscn`
+
+---
+
+### Commit #3 - `2bf9a67`
+**Mensaje**: `feat: Fase 1 completada - Escenas individuales + nivel básico`
+
+---
+
+### Commit #2 - `f0f1e74`
 **Mensaje**: `feat: Implementación Fase 1 - Scripts C# básicos + estructura inicial`  
 **Fecha**: 19 Septiembre, 2026
 
@@ -12,7 +53,6 @@
 - ✅ Crear escenas individuales: `player.tscn`, `enemy_goomba.tscn`, `trap_spring.tscn`
 - ✅ Actualizar `main.tscn` con entidades básicas y primer nivel en `level_1.tscn`
 - ✅ Documentación actualizada: `project-manager.md`, `project-summary.md`
-- ✅ Push inicial a GitHub
 
 #### Archivos añadidos:
 ```
@@ -151,5 +191,5 @@ res/scenes/ui/lives_label.tscn
 
 ---
 
-**Última actualización**: 19 Septiembre, 2026  
+**Última actualización**: 20 Septiembre, 2026  
 **Desarrollador**: Darkf
