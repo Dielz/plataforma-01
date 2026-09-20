@@ -1,19 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://enemy_goomba"]
+[gd_scene load_steps=4 format=3 uid="uid://enemy_goomba"]
 
 [sub_resource type="CircleShape2D" id="collision_circle"]
 radius = 16.0
 
 [node name="EnemyGoomba" type="CharacterBody2D"]
-position = Vector2(400, 350)
-script = "res://scripts/EnemyBase.cs"
-move_speed = 100.0
 
-[node name="CollisionShape2D" type="CollisionShape2D", parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./EnemyGoomba"]
 shape = SubResource("collision_circle")
 
-[node name="Sprite2D" type="Sprite2D", parent="."]
+[node name="Sprite2D" type="Sprite2D", parent="./EnemyGoomba"]
+texture_filter = Nearest
 
-[node name="Hitbox" type="Area2D", parent="."]
+[node name="Hitbox" type="Area2D", parent="./EnemyGoomba"]
 position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 1
@@ -21,18 +19,9 @@ collision_mask = 1
 [sub_resource type="CircleShape2D" id="hitbox_circle"]
 radius = 14.0
 
-[node name="Visual" type="Sprite2D", parent="."]
+[node name="Visual" type="Sprite2D", parent="./EnemyGoomba"]
 
-[node name="HealthLabel" type="Label", parent="."]
+[node name="HealthLabel" type="Label", parent="./EnemyGoomba"]
 position = Vector2(-30, -25)
 text = "1/1"
 horizontal_alignment = Center
-
-[node name="Timer" type="Timer"]
-wait_time = 1.0
-
-[sub_resource type="CircleShape2D" id="death_circle"]
-radius = 20.0
-
-[node name="DeathEffect" type="Marker2D", parent="."]
-position = Vector2(0, 0)

@@ -3,47 +3,41 @@
 [sub_resource type="RectangleShape2D" id="ground_rect"]
 size = Vector2(2000, 50)
 
-[sub_resource type="CircleShape2D" id="block_circle"]
-radius = 20.0
-
 [node name="Main" type="Node2D"]
 
-[node name="LevelManager" type="Node2D", parent="."]
-resource = ExtResource("1_level_manager")
+[node name="LevelManager" type="Node2D", parent="./Main"]
 
-[node name="Player" type="CharacterBody2D", groups=["player_group"], parent="." ]
+[node name="Player" type="CharacterBody2D", groups=["player_group"], parent="./Main"]
 position = Vector2(300, 480)
-resource = ExtResource("1_player")
 
-[node name="Ground" type="StaticBody2D", parent="."]
+[node name="Ground" type="StaticBody2D", parent="./Main"]
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./Ground"]
 shape = SubResource("ground_rect")
 position = Vector2(500, 425)
 
-[node name="BlockA" type="StaticBody2D", parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D", parent="./BlockA"]
-shape = SubResource("block_circle")
+[node name="BlockA" type="StaticBody2D", parent="./Main"]
 position = Vector2(700, 380)
 
-[node name="BlockB" type="StaticBody2D", parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./BlockA"]
+shape = SubResource("ground_rect")
+size = Vector2(60, 50)
+
+[node name="BlockB" type="StaticBody2D", parent="./Main"]
 position = Vector2(950, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./BlockB"]
-shape = SubResource("block_circle")
+shape = SubResource("ground_rect")
+size = Vector2(60, 50)
 
-[node name="Checkpoint" type="Marker2D", parent="." ]
+[node name="Checkpoint" type="Marker2D", parent="./Main" ]
 position = Vector2(1200, 370)
 
-[node name="WinCondition" type="Marker2D", parent="."]
+[node name="WinCondition" type="Marker2D", parent="./Main"]
 position = Vector2(1800, 300)
 
-[node name="SpawnPoint" type="Marker2D"]
+[node name="SpawnPoint" type="Marker2D", parent="./Main"]
 position = Vector2(300, 480)
 
-[node name="EndMarker" type="Marker2D"]
+[node name="EndMarker" type="Marker2D", parent="./Main"]
 position = Vector2(2000, 50)
-
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://scenes/level_manager.tscn" id="1_level_manager"]

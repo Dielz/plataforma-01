@@ -1,33 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://player_scene"]
+[gd_scene load_steps=4 format=3 uid="uid://player_scene"]
 
 [sub_resource type="RectangleShape2D" id="collision_rect"]
 size = Vector2(32, 48)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, 0)
-script = "res://scripts/Player.cs"
 
-[node name="CollisionShape2D" type="CollisionShape2D", parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./Player"]
 shape = SubResource("collision_rect")
 
-[node name="Sprite2D" type="Sprite2D", parent="."]
+[node name="Sprite2D" type="Sprite2D", parent="./Player"]
+texture_filter = Nearest
 
-[node name="HealthLabel" type="Label", parent="."]
+[node name="HealthLabel" type="Label", parent="./Player"]
 position = Vector2(-50, -25)
 size_flags_horizontal = 2
 text = "❤️ 3/3"
 horizontal_alignment = Center
 
-[node name="Timer" type="Timer"]
+[node name="Timer" type="Timer", parent="./Player"]
 wait_time = 0.1
 
-[node name="FlashTimer" type="Timer"]
+[node name="FlashTimer" type="Timer", parent="./Player"]
 wait_time = 0.05
 
 [sub_resource type="CircleShape2D" id="hitbox_circle"]
 radius = 16.0
 
-[node name="Hitbox" type="Area2D", parent="."]
+[node name="Hitbox" type="Area2D", parent="./Player"]
 position = Vector2(0, -8)
-collision_shape = SubResource("hitbox_circle")
-shape = SubResource("hitbox_circle")
+collision_layer = 1
+collision_mask = 1
