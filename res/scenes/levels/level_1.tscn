@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://level1_basic"]
+
+[sub_resource type="RectangleShape2D" id="ground_rect"]
+size = Vector2(2000, 50)
+
+[sub_resource type="CircleShape2D" id="block_circle"]
+radius = 20.0
+
+[node name="Main" type="Node2D"]
+
+[node name="LevelManager" type="Node2D", parent="."]
+resource = ExtResource("1_level_manager")
+
+[node name="Player" type="CharacterBody2D", groups=["player_group"], parent="." ]
+position = Vector2(300, 480)
+resource = ExtResource("1_player")
+
+[node name="Ground" type="StaticBody2D", parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./Ground"]
+shape = SubResource("ground_rect")
+position = Vector2(500, 425)
+
+[node name="BlockA" type="StaticBody2D", parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./BlockA"]
+shape = SubResource("block_circle")
+position = Vector2(700, 380)
+
+[node name="BlockB" type="StaticBody2D", parent="."]
+position = Vector2(950, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./BlockB"]
+shape = SubResource("block_circle")
+
+[node name="Checkpoint" type="Marker2D", parent="." ]
+position = Vector2(1200, 370)
+
+[node name="WinCondition" type="Marker2D", parent="."]
+position = Vector2(1800, 300)
+
+[node name="SpawnPoint" type="Marker2D"]
+position = Vector2(300, 480)
+
+[node name="EndMarker" type="Marker2D"]
+position = Vector2(2000, 50)
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/level_manager.tscn" id="1_level_manager"]

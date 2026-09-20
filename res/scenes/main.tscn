@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://player_main_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_goomba.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/trap_spring.tscn" id="3_trap"]
+[sub_resource type="RectangleShape2D" id="spring_hitbox_rect"]
+size = Vector2(80.0, 60.0)
+
+[node name="Main" type="Node2D"]
+
+[node name="LevelManager" type="Node2D" groups=["level_management"], parent="."]
+resource = ExtResource("1_level_manager")
+
+[node name="Player" type="CharacterBody2D" groups=["player_group"], parent="." ]
+resource = ExtResource("1_player")
+
+[node name="SpringTrap" type="Node2D", parent="Main"]
+
+[node name="Hitbox" type="Area2D", parent="./SpringTrap"]
+collision_shape = SubResource("spring_hitbox_rect")
+shape = SubResource("spring_hitbox_rect")
+
+[node name="Visual" type="Sprite2D", parent="./SpringTrap"]
+
+[node name="Timer" type="Timer"]
+wait_time = 3.0
+
+[sub_resource type="CircleShape2D" id="enemy_circle"]
+radius = 15.0
+
+[node name="EnemyGoomba" type="CharacterBody2D", parent="Main"]
+collision_shape.shape = SubResource("enemy_circle")
+
+[node name="Hitbox" type="Area2D", parent="./EnemyGoomba"]
+collision_layer = 2
+collision_mask = 1
+
+[node name="Sprite2D" type="Sprite2D", parent="./EnemyGoomba"]
