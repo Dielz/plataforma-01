@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" path="res://res/scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://res/scenes/enemy_goomba.tscn" id="2_enemy"]
 [ext_resource type="Script" path="res://res/scripts/TileSprite2D.cs" id="3_tile"]
 [ext_resource type="Texture2D" path="res://res/assets/Sprites/Tiles/Default/terrain_grass_block.png" id="4_tile_tex"]
 [ext_resource type="PackedScene" path="res://res/scenes/goal.tscn" id="5_goal"]
+[ext_resource type="PackedScene" path="res://res/scenes/trap_spring.tscn" id="6_trap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(2000, 50)
@@ -29,4 +30,7 @@ texture = ExtResource("4_tile_tex")
 position = Vector2(600, 450)
 
 [node name="Goal" parent="." instance=ExtResource("5_goal")]
-position = Vector2(1700, 410)
+position = Vector2(1700, 500)
+
+[node name="SpringTrap" parent="." instance=ExtResource("6_trap")]
+position = Vector2(950, 476)
