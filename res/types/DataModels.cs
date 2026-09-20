@@ -1,6 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 
-namespace Plataform01.Types {
+namespace Plataforma01.Types {
     // DTO para guardar estado del jugador entre niveles
     public partial class PlayerData : GodotObject {
         [Export] public int Health = 3;
@@ -25,10 +27,10 @@ namespace Plataform01.Types {
         
         public void LoadFromConfig(string configPath) {
             // Cargar datos desde archivo de configuración si existe
-            var file = FileAccess.Open(configPath, FileAccess.Read);
+            var file = FileAccess.Open(configPath, FileAccess.ModeFlags.Read);
             if (file != null) {
-                string content = FileAccess.GetAsText(file);
-                FileAccess.Close(file);
+                string content = file.GetAsText();
+                file.Close();
                 
                 // Parsear contenido del archivo
                 Name = ParseString(content, "name", "");
@@ -40,14 +42,14 @@ namespace Plataform01.Types {
         
         public void SaveToFile(string configPath) {
             // Guardar datos a archivo de configuración
-            var file = FileAccess.Open(configPath, FileAccess.Write);
+            var file = FileAccess.Open(configPath, FileAccess.ModeFlags.Write);
             if (file != null) {
                 string content = $"name={Name}\n" +
                                 $"path={Path}\n" +
                                 $"checkpoint={CheckpointIndex}\n" +
                                 $"completed={Completed.ToString().ToLower()}\n";
-                FileAccess.StoreString(file, content);
-                FileAccess.Close(file);
+                file.StoreString(content);
+                file.Close();
             }
         }
         
@@ -94,7 +96,7 @@ namespace Plataform01.Types {
         public void SaveProgress() {
             // Guardar progreso en archivo local
             var path = "user://game_progress.json";
-            var progress = new Dictionary<string, object> {
+            var progress = new Godot.Collections.Dictionary {
                 ["current_level"] = CurrentLevel,
                 ["level_1_completed"] = Level1Completed,
                 ["level_2_completed"] = Level2Completed,
@@ -103,11 +105,11 @@ namespace Plataform01.Types {
                 ["total_coins_collected"] = TotalCoinsCollected
             };
             
-            string json = GodotJson.SerializeString(progress);
-            var file = FileAccess.Open(path, FileAccess.Write);
+            string json = Json.Stringify(progress);
+            var file = FileAccess.Open(path, FileAccess.ModeFlags.Write);
             if (file != null) {
-                FileAccess.StoreString(file, json);
-                FileAccess.Close(file);
+                file.StoreString(json);
+                file.Close();
             }
         }
     }

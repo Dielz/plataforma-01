@@ -1,28 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://trap_spring"]
+[gd_scene load_steps=3 format=3]
 
-[sub_resource type="CircleShape2D" id="collision_circle"]
-radius = 16.0
+[ext_resource type="Script" path="res://res/scripts/Trap.cs" id="1_trap"]
 
-[node name="SpringTrap" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 24.0
 
-[node name="CollisionShape2D" type="CollisionShape2D", parent="./SpringTrap"]
-shape = SubResource("collision_circle")
+[node name="SpringTrap" type="Area2D"]
+script = ExtResource("1_trap")
 
-[node name="Sprite2D" type="Sprite2D", parent="./SpringTrap"]
-texture_filter = Nearest
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
 
-[node name="Hitbox" type="Area2D", parent="./SpringTrap"]
-position = Vector2(0, 0)
-collision_layer = 4
-collision_mask = 1
-
-[node name="Visual" type="Sprite2D", parent="./SpringTrap"]
-visible = false
-
-[node name="Timer" type="Timer", parent="./SpringTrap"]
-wait_time = 3.0
-
-[node name="Label" type="Label", parent="./SpringTrap"]
-position = Vector2(0, -5)
-text = "TRAP"
-size_flags_horizontal = Expand
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
