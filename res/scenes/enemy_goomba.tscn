@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://enemy_goomba"]
+[gd_scene load_steps=4 format=3 uid="uid://enemy_goomba"]
 
 [sub_resource type="CircleShape2D" id="collision_circle"]
 radius = 16.0
 
 [node name="EnemyGoomba" type="CharacterBody2D"]
-
-[ext_resource type="Script" path="res://scripts/EnemyBase.cs" id="1_enemy_script"]
+script.resource_path = "res://scripts/EnemyBase.cs"
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./EnemyGoomba"]
 shape = SubResource("collision_circle")
