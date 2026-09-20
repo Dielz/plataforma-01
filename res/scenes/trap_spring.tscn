@@ -5,6 +5,8 @@ radius = 16.0
 
 [node name="SpringTrap" type="Node2D"]
 
+[ext_resource type="Script" path="res://scripts/Trap.cs" id="1_trap_script"]
+
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./SpringTrap"]
 shape = SubResource("collision_circle")
 

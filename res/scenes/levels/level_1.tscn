@@ -10,6 +10,8 @@ size = Vector2(2000, 50)
 [node name="Player" type="CharacterBody2D", groups=["player_group"], parent="./Main"]
 position = Vector2(300, 480)
 
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_player_script"]
+
 [node name="Ground" type="StaticBody2D", parent="./Main"]
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./Ground"]
