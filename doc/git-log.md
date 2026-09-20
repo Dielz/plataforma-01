@@ -2,7 +2,24 @@
 
 ## 📜 Commits Históricos
 
-### Commit #8 (Actual) - `9b96635`
+### Commit #9 (Actual) - `b74bbaf`
+**Mensaje**: `feat: Bucle de juego principal - stomp enemigos, danio, invencibilidad, muerte por caida, meta con bandera y camara`  
+**Fecha**: 20 Septiembre, 2026
+
+#### Cambios introducidos:
+- ✅ Player: pisar enemigos (stomp) los elimina y rebota al jugador; contacto lateral hace daño
+- ✅ Invincibilidad temporal con flash visual tras recibir daño
+- ✅ Muerte por caída (kill plane) y reinicio del nivel automático
+- ✅ `LevelManager` como autoload con `RestartLevel()` / `CompleteLevel()`
+- ✅ Nueva escena `goal.tscn` (bandera de meta) con script `Goal.cs`
+- ✅ `Camera2D` dentro de `player.tscn` que sigue al jugador con suavizado
+- ✅ `EnemyBase.Die()` + limpieza de enemigos que caen fuera del nivel
+- ✅ Verificado: import headless sin errores, build OK, juego corre sin warnings
+- ✅ Push a GitHub
+
+---
+
+### Commit #8 - `9b96635`
 **Mensaje**: `fix: Proyecto compila y corre - escenas .tscn, scripts C# y csproj corregidos`  
 **Fecha**: 20 Septiembre, 2026
 

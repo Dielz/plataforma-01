@@ -3,7 +3,7 @@
 ## Estado Actual del Proyecto
 
 ### Fecha de Inicio: 19 de Septiembre, 2026
-### Estado: Implementación Fase 1 - Scripts Básicos Completos ✅
+### Estado: Fase 1 Completa ✅ + Bucle de juego principal funcional ✅
 
 ---
 
@@ -41,11 +41,15 @@
 
 ### Prioridad MEDIA (En Progreso)
 ```
-[🔨] Implementar sistema de partículas:
-    [ ] Impact effects en player/enemy
-    [ ] Death effects para enemigos
-    [ ] Invincibility flash animado
-    
+[✅] Bucle de juego principal:
+    [✅] Pisar enemigos (stomp) para eliminarlos + rebote
+    [✅] Daño por contacto lateral con enemigos
+    [✅] Daño por trampas (sierra)
+    [✅] Invincibilidad temporal con flash tras recibir daño
+    [✅] Muerte por caída y reinicio automático del nivel
+    [✅] Condición de victoria (bandera de meta)
+    [✅] Cámara que sigue al jugador (Camera2D en player)
+
 [🔨] Diseñar nivel 1 completo con múltiples plataformas:
     [ ] Plataformas escalonadas
     [ ] Zonas de peligro (lava/agua)
@@ -302,5 +306,5 @@ Arte/Audio: Kenney Assets (licencia gratuita)
 
 ---
 
-**Última actualización:** 19 Septiembre, 2026  
-**Estado del Proyecto:** Inicialización - Setup de entorno
+**Última actualización:** 20 Septiembre, 2026  
+**Estado del Proyecto:** Fase 1 ✅ + Bucle de juego principal funcional (siguiente: HUD y monedas)
