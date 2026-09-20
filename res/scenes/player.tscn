@@ -25,3 +25,11 @@ scale = Vector2(0.4, 0.4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -300
+limit_top = -250
+limit_right = 1900
+limit_bottom = 620
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

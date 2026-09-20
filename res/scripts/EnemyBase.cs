@@ -10,6 +10,12 @@ namespace Plataform01
         {
             float d = (float)delta;
 
+            if (GlobalPosition.Y > 1500f)
+            {
+                QueueFree();
+                return;
+            }
+
             if (!IsOnFloor())
             {
                 Velocity += new Vector2(0, 1200f * d);
@@ -22,6 +28,14 @@ namespace Plataform01
             {
                 MoveSpeed *= -1f;
             }
+        }
+
+        public virtual void Die()
+        {
+            SetPhysicsProcess(false);
+            CollisionLayer = 0;
+            CollisionMask = 0;
+            QueueFree();
         }
     }
 }

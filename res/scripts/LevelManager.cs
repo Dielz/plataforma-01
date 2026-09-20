@@ -2,7 +2,7 @@ using Godot;
 
 namespace Plataform01
 {
-    public partial class LevelManager : Node2D
+    public partial class LevelManager : Node
     {
         [Export] public string StartingLevel = "res://res/scenes/levels/level_1.tscn";
 
@@ -11,16 +11,15 @@ namespace Plataform01
             GD.Print("LevelManager listo");
         }
 
-        public void LoadLevel(int levelIndex)
+        public void RestartLevel()
         {
-            var packed = GD.Load<PackedScene>(StartingLevel);
-            if (packed == null)
-            {
-                GD.PrintErr($"No se pudo cargar el nivel: {StartingLevel}");
-                return;
-            }
+            GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+        }
 
-            AddChild(packed.Instantiate());
+        public void CompleteLevel()
+        {
+            GD.Print("Level complete!");
+            RestartLevel();
         }
     }
 }

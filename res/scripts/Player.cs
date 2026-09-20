@@ -11,8 +11,17 @@ namespace Plataform01
 
         [ExportGroup("Health")]
         [Export] public int MaxHealth = 3;
+        [Export] public float InvincibilityTime = 0.8f;
+
+        [ExportGroup("Combat")]
+        [Export] public float StompBounceVelocity = 320f;
+
+        [ExportGroup("Level")]
+        [Export] public float KillPlaneY = 1000f;
 
         private int _health;
+        private float _invincibleTimer = 0f;
+        private bool _dead = false;
 
         public override void _Ready()
         {
@@ -21,7 +30,14 @@ namespace Plataform01
 
         public override void _PhysicsProcess(double delta)
         {
+            if (_dead) return;
+
             float d = (float)delta;
+
+            if (_invincibleTimer > 0f)
+            {
+                _invincibleTimer -= d;
+            }
 
             if (!IsOnFloor())
             {
@@ -37,16 +53,83 @@ namespace Plataform01
             }
 
             MoveAndSlide();
+            HandleEnemyCollisions();
+
+            if (GlobalPosition.Y > KillPlaneY)
+            {
+                Die();
+            }
+
+            UpdateInvincibilityVisual();
+        }
+
+        private void HandleEnemyCollisions()
+        {
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                var collision = GetSlideCollision(i);
+                if (collision.GetCollider() is EnemyBase enemy)
+                {
+                    if (IsStomping(collision, enemy))
+                    {
+                        enemy.Die();
+                        Velocity = new Vector2(Velocity.X, -StompBounceVelocity);
+                    }
+                    else
+                    {
+                        TakeDamage(1);
+                    }
+                }
+            }
+        }
+
+        private bool IsStomping(KinematicCollision2D collision, EnemyBase enemy)
+        {
+            bool movingDown = Velocity.Y > 0f;
+            bool hitFromAbove = collision.GetNormal().Y < -0.4f;
+            bool aboveEnemy = GlobalPosition.Y < enemy.GlobalPosition.Y;
+            return aboveEnemy && (movingDown || hitFromAbove);
         }
 
         public void TakeDamage(int amount)
         {
+            if (_dead || _invincibleTimer > 0f) return;
+
             _health -= amount;
+            _invincibleTimer = InvincibilityTime;
             GD.Print($"Player damaged! HP: {_health}/{MaxHealth}");
 
             if (_health <= 0)
             {
-                QueueFree();
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            if (_dead) return;
+            _dead = true;
+            SetPhysicsProcess(false);
+            CollisionLayer = 0;
+            CollisionMask = 0;
+            Visible = false;
+
+            GetTree().CreateTimer(1.2).Timeout += () =>
+            {
+                GetNode<LevelManager>("/root/LevelManager").RestartLevel();
+            };
+        }
+
+        private void UpdateInvincibilityVisual()
+        {
+            if (_invincibleTimer > 0f)
+            {
+                bool flashOn = ((int)(_invincibleTimer * 12f) % 2) == 0;
+                Modulate = new Color(1f, 1f, 1f, flashOn ? 0.35f : 1f);
+            }
+            else
+            {
+                Modulate = Colors.White;
             }
         }
     }
