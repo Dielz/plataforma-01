@@ -4,7 +4,6 @@
 radius = 16.0
 
 [node name="SpringTrap" type="Node2D"]
-script.resource_path = "res://scripts/Trap.cs"
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./SpringTrap"]
 shape = SubResource("collision_circle")

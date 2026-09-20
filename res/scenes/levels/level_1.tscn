@@ -6,11 +6,9 @@ size = Vector2(2000, 50)
 [node name="Main" type="Node2D"]
 
 [node name="LevelManager" type="Node2D", parent="./Main"]
-script.resource_path = "res://scripts/LevelManager.cs"
 
 [node name="Player" type="CharacterBody2D", groups=["player_group"], parent="./Main"]
 position = Vector2(300, 480)
-script.resource_path = "res://scripts/Player.cs"
 
 [node name="Ground" type="StaticBody2D", parent="./Main"]
 

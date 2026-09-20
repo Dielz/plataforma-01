@@ -4,7 +4,6 @@
 radius = 16.0
 
 [node name="EnemyGoomba" type="CharacterBody2D"]
-script.resource_path = "res://scripts/EnemyBase.cs"
 
 [node name="CollisionShape2D" type="CollisionShape2D", parent="./EnemyGoomba"]
 shape = SubResource("collision_circle")
