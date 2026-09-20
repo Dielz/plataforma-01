@@ -31,22 +31,33 @@
     [✅] Trap.cs con sistema de activación/cooldown
     [✅] LevelManager.cs con carga de niveles y UI updates
 [✅] Crear DataModels.cs con clases DTO para persistencia
-[✅] Estructura scenes/main.tscn básica
+[✅] Crear escenas individuales:
+    [✅] player.tscn (CharacterBody2D + collision + labels)
+    [✅] enemy_goomba.tscn (patrón Goomba clásico)
+    [✅] trap_spring.tscn (trampa con cooldown visual)
+[✅] Actualizar main.tscn con entidades básicas
+[✅] Crear primer nivel básico (level_1.tscn)
 ```
 
-### Prioridad ALTA (En Progreso)
+### Prioridad MEDIA (En Progreso)
 ```
-[🔨] Crear escenas individuales:
-    [ ] player.tscn (extender de CharacterBody2D)
-    [ ] enemy_goomba.tscn
-    [ ] trap_spring.tscn
-    
 [🔨] Implementar sistema de partículas:
-    [ ] Impact effects
-    [ ] Death effects
-    [ ] Invincibility flash
+    [ ] Impact effects en player/enemy
+    [ ] Death effects para enemigos
+    [ ] Invincibility flash animado
+    
+[🔨] Diseñar nivel 1 completo con múltiples plataformas:
+    [ ] Plataformas escalonadas
+    [ ] Zonas de peligro (lava/agua)
+    [ ] Power-ups opcionales
+```
 
-[🔨] Crear primer nivel básico (level_1.tscn)
+### Prioridad BAJA (Polishing)
+```
+[ ] Sistema de monedas y collectables
+[ ] Música de fondo por nivel
+[ ] Transiciones entre niveles
+[ ] Menú principal completo
 ```
 
 ### Prioridad MEDIA (Siguiente Fase)

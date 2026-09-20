@@ -14,37 +14,22 @@
 
 **Para Desarrollo Desktop:**
 ```bash
-# Descargar e instalar Godot 4.x
+# Descargar e instalar Godot 4.x con soporte para .NET
 # Instalar .NET SDK 6.0+
-git clone https://github.com/tu-usuario/plataforma-01.git
+git clone https://github.com/Dielz/plataforma-01.git
 cd plataforma-01
 ```
 
-**Para Mobile (Android/iOS):**
-```bash
-# Configuración adicional de exportación en project.godot
-# Ver doc/development-guide.md para detalles
-```
+### Ejecución Rápida
 
-### Instalación
-
-1. **Configurar GDExtension .NET:**
+1. **Abrir en Godot:**
    ```bash
-   # Descargar GDExtension
-   curl -L https://github.com/godot-rust/gdextension-dotnet/releases/download/v0.x/GDExtension.zip \
-       -o godot_plugins/GDExtension.zip
-   unzip godot_plugins/GDExtension.zip -d godot_plugins/
+   File → Open Project → plataform01/
    ```
 
-2. **Importar Assets:**
-   - Los assets de Kenney ya están importados en `res/assets/`
-
-3. **Compilar y Ejecutar:**
-   ```bash
-   # En Godot: File -> Run
-   # O desde terminal:
-   mono --debug ./bin/godot_v4.x.windows.build.dll platform.2d
-   ```
+2. **Ejecutar:**
+   - File → Run Main Scene
+   - O presiona F5 desde el editor
 
 ## 📁 Estructura del Proyecto
 
@@ -70,19 +55,24 @@ plataforma-01/
 
 ## 🎮 Características
 
-- ✅ **Mecánicas de Plataforma**: Salto, correr, doble salto
-- ✅ **Enemigos Variados**: Goombas, Koopa, Fire Pea, Bullet Bills
-- ✅ **Power-ups Clásicos**: Flor, Hongo Gigante, Estrella
-- ✅ **Trampas Diversas**: Pistones, fuego, plataformas móviles
-- ✅ **Progresión de Niveles**: 4 niveles con dificultad creciente
-- ✅ **Desktop y Mobile**: Exportación para Windows + Android/iOS
-- ✅ **Assets Profesionales**: Paquete completo de Kenney
+### ✅ Implementadas (Fase 1):
+- **Mecánicas de Plataforma**: Salto básico, correr, inercia suave
+- **Enemigo Básico**: Goomba con patrón de colisión clásico
+- **Sistema de Trampas**: Pistones con cooldown y activación por proximidad
+- **Gestión de Niveles**: Carga desde archivos .tscn, reinicio automático
+- **Sistema de Daño**: Invencibilidad temporal, pantallazos por impacto
+
+### 🚧 Pendientes (Fases 2+):
+- Enemigos avanzados: Koopa, Fire Pea, Bullet Bills
+- Power-ups: Flor de fuego, Hongo gigante, Estrella
+- Más trampas y obstáculos complejos
+- Progresión de niveles avanzada (4 niveles)
 
 ## 🛠️ Tecnologías
 
-- **Motor:** Godot Engine 4.x
-- **Lenguaje:** C# (.NET) vía GDExtension
-- **Renderizado:** Vulkan (Desktop), GLES3 (Mobile)
+- **Motor:** Godot Engine 4.7.x
+- **Lenguaje:** C# (.NET) Native Interop ✅
+- **Renderizado:** D3D12 (Desktop), GLES3 (Mobile)
 - **Control de Versiones:** Git + GitHub
 
 ## 📜 Licencia

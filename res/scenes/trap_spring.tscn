@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://trap_spring"]
+
+[sub_resource type="CircleShape2D" id="collision_circle"]
+radius = 16.0
+
+[node name="SpringTrap" type="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D", parent="./SpringTrap"]
+shape = SubResource("collision_circle")
+
+[node name="Sprite2D" type="Sprite2D", parent="./SpringTrap"]
+texture_filter = Nearest
+
+[node name="Hitbox" type="Area2D", parent="./SpringTrap"]
+
+[node name="Visual" type="Sprite2D", parent="./SpringTrap"]
+visible = false
+
+[node name="Timer" type="Timer", parent="./SpringTrap"]
+wait_time = 3.0
+
+[node name="Label" type="Label", parent="./SpringTrap"]
+position = Vector2(0, -5)
+text = "TRAP"
+size_flags_horizontal = Expand
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer", parent="./SpringTrap"]
+bus = "SFX"
+volume_db = -3.0
+
+[sub_resource type="CapsuleShape2D" id="spring_capsule"]
+radius = 8.0
+height = 40.0

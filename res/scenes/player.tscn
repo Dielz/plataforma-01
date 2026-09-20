@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://player_scene"]
+
+[sub_resource type="RectangleShape2D" id="collision_rect"]
+size = Vector2(32, 48)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 0)
+script = "res://scripts/Player.cs"
+
+[node name="CollisionShape2D" type="CollisionShape2D", parent="."]
+shape = SubResource("collision_rect")
+
+[node name="Sprite2D" type="Sprite2D", parent="."]
+
+[node name="HealthLabel" type="Label", parent="."]
+position = Vector2(-50, -25)
+size_flags_horizontal = 2
+text = "❤️ 3/3"
+horizontal_alignment = Center
+
+[node name="Timer" type="Timer"]
+wait_time = 0.1
+
+[node name="FlashTimer" type="Timer"]
+wait_time = 0.05
+
+[sub_resource type="CircleShape2D" id="hitbox_circle"]
+radius = 16.0
+
+[node name="Hitbox" type="Area2D", parent="."]
+position = Vector2(0, -8)
+collision_shape = SubResource("hitbox_circle")
+shape = SubResource("hitbox_circle")
