@@ -1,0 +1,18 @@
+# Godot 4+ specific ignores
+.godot/
+.android/
+
+# GDExtension build artifacts (opcional - compilar manualmente)
+godot_plugins/GDExtension.dll
+godot_plugins/*.log
+godot_plugins/GDExtension.so
+
+# Archivos importados (recomendado no commitear para evitar conflictos)
+.res/imported/**
+!.res/imported/.gitkeep
+
+# Build output de Godot
+bin/
+obj/
+*.pdb
+*.exe
