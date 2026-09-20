@@ -23,9 +23,12 @@ namespace Plataform01
         private float _invincibleTimer = 0f;
         private bool _dead = false;
 
+        public int Health => _health;
+
         public override void _Ready()
         {
             _health = MaxHealth;
+            AddToGroup("player");
         }
 
         public override void _PhysicsProcess(double delta)
