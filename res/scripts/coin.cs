@@ -2,30 +2,24 @@ using Godot;
 
 namespace Plataform01
 {
-    public partial class Coin : CharacterBody2D
+    public partial class Coin : Area2D
     {
-        [Export] public float MoveSpeed = 0f;
-
         public override void _Ready()
         {
+            CollisionLayer = 1;
+            CollisionMask = 1;
             AddToGroup("coin");
+            BodyEntered += OnBodyEntered;
         }
 
-        public override void _PhysicsProcess(double delta)
+        private void OnBodyEntered(Node2D body)
         {
-            float d = (float)delta;
-            
-            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            if (body is Player player)
             {
-                var collision = GetSlideCollision(i);
-                if (collision.GetCollider() is Player player)
-                {
-                    GD.Print($"[COIN] Player detected! Coins: {player.Coins}");
-                    player.OnCoinCollected();
-                    Visible = false;
-                    set_physics_process(false);
-                    break;
-                }
+                GD.Print($"[COIN] Player detected! Coins: {player.Coins}");
+                player.OnCoinCollected();
+                Visible = false;
+                set_physics_process(false);
             }
         }
     }
