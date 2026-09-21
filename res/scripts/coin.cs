@@ -4,21 +4,28 @@ namespace Plataform01
 {
     public partial class Coin : Area2D
     {
+        private bool _collected = false;
+
         public override void _Ready()
         {
             CollisionLayer = 1;
             CollisionMask = 1;
-            AddToGroup("coin");
-            BodyEntered += OnBodyEntered;
+            Monitoring = true;
         }
 
-        private void OnBodyEntered(Node2D body)
+        public override void _PhysicsProcess(double delta)
         {
-            if (body is Player player)
+            if (_collected) return;
+
+            foreach (Node2D body in GetOverlappingBodies())
             {
-                GD.Print($"[COIN] Player detected! Coins: {player.Coins}");
-                player.OnCoinCollected();
-                Visible = false;
+                if (body is Player player)
+                {
+                    _collected = true;
+                    player.OnCoinCollected();
+                    QueueFree();
+                    return;
+                }
             }
         }
     }
