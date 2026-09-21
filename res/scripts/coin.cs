@@ -6,6 +6,8 @@ namespace Plataform01
     {
         public override void _Ready()
         {
+            CollisionLayer = 1;
+            CollisionMask = 1;
             BodyEntered += OnBodyEntered;
         }
 
