@@ -41,8 +41,15 @@ namespace Plataform01
             _coinLabel.OffsetRight = -80;
             _coinLabel.OffsetTop = 56;
             _coinLabel.AddThemeFontSizeOverride("font_size", 28);
-            _coinLabel.Text = "Coins: 0";
             control.AddChild(_coinLabel);
+
+            // Buscar jugador inmediatamente
+            _player = GetTree().GetFirstNodeInGroup("player") as Player;
+            if (_player != null)
+            {
+                BuildHearts(_player.MaxHealth);
+                UpdateCoins();
+            }
         }
 
         public override void _Process(double delta)

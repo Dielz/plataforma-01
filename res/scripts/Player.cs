@@ -32,6 +32,8 @@ namespace Plataform01
         {
             _health = MaxHealth;
             AddToGroup("player");
+            CollisionLayer = 1;
+            CollisionMask = 1;
         }
 
         public override void _PhysicsProcess(double delta)
