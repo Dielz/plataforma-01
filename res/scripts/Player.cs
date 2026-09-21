@@ -137,9 +137,18 @@ namespace Plataform01
             Visible = false;
             PlaySfx("sfx_disappear");
 
-            GetTree().CreateTimer(1.2).Timeout += () =>
+            bool gameOver = _health <= 0;
+
+            GetTree().CreateTimer(gameOver ? 1.4f : 1.0f).Timeout += () =>
             {
-                GetNode<LevelManager>("/root/LevelManager").RestartLevel();
+                if (gameOver)
+                {
+                    GetNode<LevelManager>("/root/LevelManager").ShowGameOver();
+                }
+                else
+                {
+                    GetNode<LevelManager>("/root/LevelManager").RestartLevel();
+                }
             };
         }
 
