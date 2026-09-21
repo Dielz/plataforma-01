@@ -22,6 +22,7 @@ namespace Plataform01
                 {
                     GD.Print($"[COIN] Player detected! Coins: {player.Coins}");
                     player.OnCoinCollected();
+                    set_physics_process(false);
                     QueueFree();
                     break;
                 }
