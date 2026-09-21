@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="PackedScene" path="res://res/scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://res/scenes/enemy_goomba.tscn" id="2_enemy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://res/scenes/goal.tscn" id="5_goal"]
 [ext_resource type="PackedScene" path="res://res/scenes/trap_spring.tscn" id="6_trap"]
 [ext_resource type="PackedScene" path="res://res/scenes/ui/hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" path="res://res/scenes/coin.tscn" id="8_coin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(2000, 50)
@@ -35,5 +36,20 @@ position = Vector2(1700, 500)
 
 [node name="SpringTrap" parent="." instance=ExtResource("6_trap")]
 position = Vector2(950, 476)
+
+[node name="Coin" parent="." instance=ExtResource("8_coin")]
+position = Vector2(400, 360)
+
+[node name="Coin" parent="." instance=ExtResource("8_coin")]
+position = Vector2(600, 360)
+
+[node name="Coin" parent="." instance=ExtResource("8_coin")]
+position = Vector2(1000, 360)
+
+[node name="Coin" parent="." instance=ExtResource("8_coin")]
+position = Vector2(1200, 360)
+
+[node name="Coin" parent="." instance=ExtResource("8_coin")]
+position = Vector2(1400, 360)
 
 [node name="HUD" parent="." instance=ExtResource("7_hud")]
