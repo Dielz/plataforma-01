@@ -38,18 +38,18 @@ position = Vector2(1700, 500)
 position = Vector2(950, 476)
 
 [node name="Coin1" parent="." unique_id=495157450 instance=ExtResource("8_coin")]
-position = Vector2(399, 444)
+position = Vector2(400, 515)
 
 [node name="Coin2" parent="." unique_id=335331931 instance=ExtResource("8_coin")]
-position = Vector2(603, 399)
+position = Vector2(600, 515)
 
 [node name="Coin3" parent="." unique_id=1239228416 instance=ExtResource("8_coin")]
-position = Vector2(1006, 413)
+position = Vector2(1000, 515)
 
 [node name="Coin4" parent="." unique_id=1981676052 instance=ExtResource("8_coin")]
-position = Vector2(1206, 414)
+position = Vector2(1200, 515)
 
 [node name="Coin5" parent="." unique_id=957801931 instance=ExtResource("8_coin")]
-position = Vector2(1395, 414)
+position = Vector2(1400, 515)
 
 [node name="HUD" parent="." unique_id=1841419142 instance=ExtResource("7_hud")]
