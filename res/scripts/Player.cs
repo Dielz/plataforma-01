@@ -58,6 +58,7 @@ namespace Plataform01
             if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
             {
                 Velocity = new Vector2(Velocity.X, -JumpVelocity);
+                PlaySfx("sfx_jump");
             }
 
             MoveAndSlide();
@@ -82,6 +83,7 @@ namespace Plataform01
                     {
                         enemy.Die();
                         Velocity = new Vector2(Velocity.X, -StompBounceVelocity);
+                        PlaySfx("sfx_gem");
                     }
                     else
                     {
@@ -106,6 +108,7 @@ namespace Plataform01
             _health -= amount;
             _invincibleTimer = InvincibilityTime;
             GD.Print($"Player damaged! HP: {_health}/{MaxHealth}");
+            PlaySfx("sfx_hurt");
 
             if (_health <= 0)
             {
@@ -119,6 +122,11 @@ namespace Plataform01
             GD.Print($"Coin collected! Total: {_coins}");
         }
 
+        private void PlaySfx(string name, float pitchScale = 1.0f)
+        {
+            GetNode<AudioManager>("/root/AudioManager").PlaySfx(name, pitchScale);
+        }
+
         private void Die()
         {
             if (_dead) return;
@@ -127,6 +135,7 @@ namespace Plataform01
             CollisionLayer = 0;
             CollisionMask = 0;
             Visible = false;
+            PlaySfx("sfx_disappear");
 
             GetTree().CreateTimer(1.2).Timeout += () =>
             {

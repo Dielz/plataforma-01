@@ -11,7 +11,6 @@ namespace Plataform01
             CollisionLayer = 1;
             CollisionMask = 1;
             Monitoring = true;
-            GD.Print($"[COIN] Script attached! Name={Name}");
         }
 
         public override void _PhysicsProcess(double delta)
@@ -24,6 +23,7 @@ namespace Plataform01
                 {
                     _collected = true;
                     player.OnCoinCollected();
+                    GetNode<AudioManager>("/root/AudioManager").PlaySfx("sfx_coin");
                     QueueFree();
                     return;
                 }
