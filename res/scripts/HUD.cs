@@ -9,6 +9,7 @@ namespace Plataform01
 
         private HBoxContainer _hearts;
         private Label _timerLabel;
+        private Label _coinLabel;
         private Player _player;
         private float _elapsed = 0f;
 
@@ -34,6 +35,14 @@ namespace Plataform01
             _timerLabel.OffsetTop = 20;
             _timerLabel.AddThemeFontSizeOverride("font_size", 32);
             control.AddChild(_timerLabel);
+
+            _coinLabel = new Label();
+            _coinLabel.SetAnchorsPreset(Control.LayoutPreset.TopRight);
+            _coinLabel.OffsetRight = -80;
+            _coinLabel.OffsetTop = 56;
+            _coinLabel.AddThemeFontSizeOverride("font_size", 28);
+            _coinLabel.Text = "Coins: 0";
+            control.AddChild(_coinLabel);
         }
 
         public override void _Process(double delta)
@@ -41,6 +50,7 @@ namespace Plataform01
             _elapsed += (float)delta;
             UpdateTimer();
             UpdateHearts();
+            UpdateCoins();
         }
 
         private void UpdateTimer()
@@ -71,6 +81,17 @@ namespace Plataform01
                     tex.Texture = LoadHeart(i < filled);
                 }
             }
+        }
+
+        private void UpdateCoins()
+        {
+            if (_player == null || !IsInstanceValid(_player))
+            {
+                _player = GetTree().GetFirstNodeInGroup("player") as Player;
+                if (_player == null) return;
+            }
+
+            _coinLabel.Text = $"Coins: {_player.Coins}";
         }
 
         private void BuildHearts(int count)

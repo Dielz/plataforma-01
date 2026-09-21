@@ -20,6 +20,9 @@ namespace Plataform01
         [Export] public float KillPlaneY = 1000f;
 
         private int _health;
+        private int _coins = 0;
+
+        public int Coins => _coins;
         private float _invincibleTimer = 0f;
         private bool _dead = false;
 
@@ -106,6 +109,12 @@ namespace Plataform01
             {
                 Die();
             }
+        }
+
+        public void OnCoinCollected()
+        {
+            _coins++;
+            GD.Print($"Coin collected! Total: {_coins}");
         }
 
         private void Die()
