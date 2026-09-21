@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene format=3 uid="uid://dh6ecaarpegs4"]
 
 [ext_resource type="PackedScene" path="res://res/scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://res/scenes/enemy_goomba.tscn" id="2_enemy"]
-[ext_resource type="Script" path="res://res/scripts/TileSprite2D.cs" id="3_tile"]
-[ext_resource type="Texture2D" path="res://res/assets/Sprites/Tiles/Default/terrain_grass_block.png" id="4_tile_tex"]
+[ext_resource type="Script" uid="uid://cstgi4o7mxp1j" path="res://res/scripts/TileSprite2D.cs" id="3_tile"]
+[ext_resource type="Texture2D" uid="uid://byojnq8d3cebh" path="res://res/assets/Sprites/Tiles/Default/terrain_grass_block.png" id="4_tile_tex"]
 [ext_resource type="PackedScene" path="res://res/scenes/goal.tscn" id="5_goal"]
 [ext_resource type="PackedScene" path="res://res/scenes/trap_spring.tscn" id="6_trap"]
 [ext_resource type="PackedScene" path="res://res/scenes/ui/hud.tscn" id="7_hud"]
@@ -12,44 +12,44 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(2000, 50)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=758462726]
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
+[node name="Player" parent="." unique_id=344150735 instance=ExtResource("1_player")]
 position = Vector2(300, 400)
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="." unique_id=921039428]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource("RectangleShape2D_1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1880218213]
 position = Vector2(800, 525)
+shape = SubResource("RectangleShape2D_1")
 
-[node name="Sprite" type="Sprite2D" parent="Ground"]
+[node name="Sprite" type="Sprite2D" parent="Ground" unique_id=1876598517]
 texture_filter = 1
-script = ExtResource("3_tile")
 texture = ExtResource("4_tile_tex")
+script = ExtResource("3_tile")
 
-[node name="EnemyGoomba" parent="." instance=ExtResource("2_enemy")]
+[node name="EnemyGoomba" parent="." unique_id=1486951887 instance=ExtResource("2_enemy")]
 position = Vector2(600, 450)
 
-[node name="Goal" parent="." instance=ExtResource("5_goal")]
+[node name="Goal" parent="." unique_id=140549264 instance=ExtResource("5_goal")]
 position = Vector2(1700, 500)
 
-[node name="SpringTrap" parent="." instance=ExtResource("6_trap")]
+[node name="SpringTrap" parent="." unique_id=1663430262 instance=ExtResource("6_trap")]
 position = Vector2(950, 476)
 
-[node name="Coin1" parent="." instance=ExtResource("8_coin")]
-position = Vector2(400, 500)
+[node name="Coin1" parent="." unique_id=495157450 instance=ExtResource("8_coin")]
+position = Vector2(399, 444)
 
-[node name="Coin2" parent="." instance=ExtResource("8_coin")]
-position = Vector2(600, 500)
+[node name="Coin2" parent="." unique_id=335331931 instance=ExtResource("8_coin")]
+position = Vector2(603, 399)
 
-[node name="Coin3" parent="." instance=ExtResource("8_coin")]
-position = Vector2(1000, 500)
+[node name="Coin3" parent="." unique_id=1239228416 instance=ExtResource("8_coin")]
+position = Vector2(1006, 413)
 
-[node name="Coin4" parent="." instance=ExtResource("8_coin")]
-position = Vector2(1200, 500)
+[node name="Coin4" parent="." unique_id=1981676052 instance=ExtResource("8_coin")]
+position = Vector2(1206, 414)
 
-[node name="Coin5" parent="." instance=ExtResource("8_coin")]
-position = Vector2(1400, 500)
+[node name="Coin5" parent="." unique_id=957801931 instance=ExtResource("8_coin")]
+position = Vector2(1395, 414)
 
-[node name="HUD" parent="." instance=ExtResource("7_hud")]
+[node name="HUD" parent="." unique_id=1841419142 instance=ExtResource("7_hud")]

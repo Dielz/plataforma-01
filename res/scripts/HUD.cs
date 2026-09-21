@@ -37,9 +37,9 @@ namespace Plataform01
             control.AddChild(_timerLabel);
 
             _coinLabel = new Label();
-            _coinLabel.SetAnchorsPreset(Control.LayoutPreset.TopRight);
-            _coinLabel.OffsetRight = -80;
-            _coinLabel.OffsetTop = 56;
+            _coinLabel.SetAnchorsPreset(Control.LayoutPreset.TopLeft);
+            _coinLabel.OffsetLeft = 100;
+            _coinLabel.OffsetTop = 70;
             _coinLabel.AddThemeFontSizeOverride("font_size", 28);
             control.AddChild(_coinLabel);
 
