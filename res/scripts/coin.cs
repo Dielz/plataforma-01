@@ -19,7 +19,6 @@ namespace Plataform01
                 GD.Print($"[COIN] Player detected! Coins: {player.Coins}");
                 player.OnCoinCollected();
                 Visible = false;
-                set_physics_process(false);
             }
         }
     }
