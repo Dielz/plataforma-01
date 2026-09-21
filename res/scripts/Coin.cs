@@ -23,7 +23,7 @@ namespace Plataform01
                 {
                     _collected = true;
                     player.OnCoinCollected();
-                    GetNode<AudioManager>("/root/AudioManager").PlaySfx("sfx_coin");
+                    GetNodeOrNull<AudioManager>("/root/AudioManager")?.PlaySfx("sfx_coin");
                     QueueFree();
                     return;
                 }

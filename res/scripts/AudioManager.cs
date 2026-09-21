@@ -7,19 +7,16 @@ namespace Plataform01
     public partial class AudioManager : Node
     {
         private const string SoundDir = "res://res/assets/Audio/Sounds/";
+        private const int MaxPlayers = 12;
 
         private readonly Dictionary<string, AudioStream> _cache = new();
         private readonly List<AudioStreamPlayer> _players = new();
         private int _next = 0;
-
-        private const int MaxPlayers = 12;
+        private bool _poolReady = false;
 
         public override void _Ready()
         {
-            for (int i = 0; i < MaxPlayers; i++)
-            {
-                AddChild(new AudioStreamPlayer());
-            }
+            EnsurePool();
         }
 
         public void PlaySfx(string name, float pitchScale = 1.0f)
@@ -29,6 +26,8 @@ namespace Plataform01
 
         public void PlayFile(string path, float pitchScale = 1.0f)
         {
+            EnsurePool();
+
             if (!_cache.TryGetValue(path, out AudioStream stream))
             {
                 stream = GD.Load<AudioStream>(path);
@@ -47,6 +46,18 @@ namespace Plataform01
             player.Stream = stream;
             player.PitchScale = pitchScale;
             player.Play();
+        }
+
+        private void EnsurePool()
+        {
+            if (_poolReady) return;
+            _poolReady = true;
+
+            for (int i = 0; i < MaxPlayers; i++)
+            {
+                _players.Add(new AudioStreamPlayer());
+                AddChild(_players[i]);
+            }
         }
     }
 }

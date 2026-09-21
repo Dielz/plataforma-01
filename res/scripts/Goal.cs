@@ -15,7 +15,7 @@ namespace Plataform01
         {
             if (_reached || body is not Player) return;
             _reached = true;
-            GetNode<AudioManager>("/root/AudioManager").PlaySfx("sfx_magic");
+            GetNodeOrNull<AudioManager>("/root/AudioManager")?.PlaySfx("sfx_magic");
             GetNode<LevelManager>("/root/LevelManager").CompleteLevel();
         }
     }

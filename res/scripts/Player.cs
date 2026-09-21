@@ -124,7 +124,7 @@ namespace Plataform01
 
         private void PlaySfx(string name, float pitchScale = 1.0f)
         {
-            GetNode<AudioManager>("/root/AudioManager").PlaySfx(name, pitchScale);
+            GetNodeOrNull<AudioManager>("/root/AudioManager")?.PlaySfx(name, pitchScale);
         }
 
         private void Die()
